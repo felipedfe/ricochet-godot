@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://lnyqabnmu4ek"]
+
+[ext_resource type="PackedScene" uid="uid://dl5hd3nrepmkm" path="res://scenes/ball.tscn" id="1_014kd"]
+[ext_resource type="Script" uid="uid://5lx33s3kr54w" path="res://scripts/level_1.gd" id="1_bswci"]
+[ext_resource type="Script" uid="uid://p80bctg35b7g" path="res://scenes/ball.gd" id="3_rus8k"]
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_bswci")
+
+[node name="Ball" parent="." instance=ExtResource("1_014kd")]
+position = Vector2(633, 621)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("3_rus8k")
+
+[node name="VisibleOnScreenNotifier2D2" type="VisibleOnScreenNotifier2D" parent="Ball"]
+
+[connection signal="screen_exited" from="Ball/VisibleOnScreenNotifier2D2" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
