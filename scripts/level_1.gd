@@ -16,5 +16,5 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 	reset_ball()
 
 func _process(_delta):
-	if Input.is_action_just_pressed("click"):
+	if Input.is_action_just_pressed("click") or Input.is_action_just_pressed("d"):
 		ball_node.launch()
