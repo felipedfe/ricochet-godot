@@ -4,7 +4,7 @@ extends Node2D
 var initial_ball_pos: Vector2
 
 func _ready():
-	initial_ball_pos = Vector2(get_viewport_rect().size.x / 2, 1000)
+	initial_ball_pos = Vector2(get_viewport_rect().size.x / 2, get_viewport_rect().size.y - 30)
 	ball_node.position = initial_ball_pos
 
 func reset_ball():

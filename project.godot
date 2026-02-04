@@ -12,13 +12,15 @@ config_version=5
 
 config/name="Ricochet Godot"
 run/main_scene="uid://dgthmi1oursx1"
-config/features=PackedStringArray("4.4", "Mobile")
+config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
 
 [display]
 
 window/size/viewport_width=720
 window/size/viewport_height=1280
+window/size/window_width_override=300
+window/size/window_height_override=533
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_height"
 window/handheld/orientation=1

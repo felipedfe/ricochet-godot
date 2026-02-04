@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed := 800.0
+@export var speed := 1000
 var direction := Vector2.ZERO
 var motion: Vector2
 
@@ -8,7 +8,8 @@ func _ready():
 	direction = Vector2.ZERO
 
 func launch():
-	direction = Vector2(1, -1).normalized()
+	# (1, -1) = pra direita e pra cima
+	direction = Vector2(1, -1).normalized() # normalized é pra deixar a velocidade diagonal não muito rápida
 
 func reset():
 	direction = Vector2.ZERO
