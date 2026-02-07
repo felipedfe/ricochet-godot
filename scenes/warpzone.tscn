@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1n4uu3aa7u77"]
+
+[ext_resource type="Script" uid="uid://c8iuwol7260n0" path="res://scenes/warpzone.gd" id="1_t715l"]
+[ext_resource type="Script" uid="uid://b5wii08qsqq4f" path="res://scripts/warp.gd" id="3_iqvb7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aaglj"]
+size = Vector2(26, 24)
+
+[node name="Warpzone" type="Node2D"]
+script = ExtResource("1_t715l")
+metadata/_edit_lock_ = true
+
+[node name="WarpA" type="Area2D" parent="."]
+position = Vector2(455, 363)
+script = ExtResource("3_iqvb7")
+
+[node name="Polygon2D" type="Polygon2D" parent="WarpA"]
+color = Color(0.42115748, 1, 0.8365545, 1)
+polygon = PackedVector2Array(-15, -14, -15, 14, 15, 14, 15, -14)
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WarpA"]
+shape = SubResource("RectangleShape2D_aaglj")
+debug_color = Color(0.7626274, 0.2327289, 0.9433803, 0.41960785)
+metadata/_edit_lock_ = true
+
+[node name="WarpB" type="Area2D" parent="."]
+script = ExtResource("3_iqvb7")
+
+[node name="Polygon2D" type="Polygon2D" parent="WarpB"]
+color = Color(0.42115748, 1, 0.8365545, 1)
+polygon = PackedVector2Array(-15, -14, -15, 14, 15, 14, 15, -14)
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WarpB"]
+shape = SubResource("RectangleShape2D_aaglj")
+debug_color = Color(0.7626274, 0.2327289, 0.9433803, 0.41960785)
+metadata/_edit_lock_ = true

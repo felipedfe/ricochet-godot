@@ -3,11 +3,12 @@ extends Node2D
 @onready var ball_node: CharacterBody2D = $Ball
 @onready var bar1: AnimatableBody2D = $BarMotion1
 var initial_ball_pos: Vector2
+var ball_ready_to_launch = true
 
 func _ready():
 	initial_ball_pos = Vector2(get_viewport_rect().size.x / 2, get_viewport_rect().size.y - 30)
 	ball_node.position = initial_ball_pos
-	bar1.setup(0,200)
+	bar1.setup(50,200)
 	#bar1.set_speed(1000)
 
 func reset_ball_pos():
@@ -17,7 +18,10 @@ func reset_ball_pos():
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	print("bolinha saiu da tela!")
 	reset_ball_pos()
+	ball_ready_to_launch = true
 
 func _process(_delta):
 	if Input.is_action_just_pressed("click") or Input.is_action_just_pressed("d"):
-		ball_node.launch()
+		if ball_ready_to_launch:
+			ball_node.launch()
+			ball_ready_to_launch = false

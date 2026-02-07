@@ -37,6 +37,7 @@ func _ready() -> void:
 	$BallSprite.modulate = Color.HOT_PINK
 
 func launch() -> void:
+	# (1, -1) = pra direita e pra cima
 	direction = Vector2(1, -1).normalized()
 
 func reset() -> void:

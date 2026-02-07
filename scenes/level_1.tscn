@@ -1,12 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://lnyqabnmu4ek"]
+[gd_scene load_steps=6 format=3 uid="uid://lnyqabnmu4ek"]
 
 [ext_resource type="PackedScene" uid="uid://dl5hd3nrepmkm" path="res://scenes/ball.tscn" id="1_014kd"]
 [ext_resource type="Script" uid="uid://5lx33s3kr54w" path="res://scripts/level_1.gd" id="1_bswci"]
-[ext_resource type="Script" uid="uid://p80bctg35b7g" path="res://scenes/ball.gd" id="3_rus8k"]
+[ext_resource type="Script" uid="uid://p80bctg35b7g" path="res://scripts/ball.gd" id="3_rus8k"]
 [ext_resource type="PackedScene" uid="uid://8y8qv0vrfw6w" path="res://scenes/bar_motion.tscn" id="4_5xbjy"]
+[ext_resource type="PackedScene" uid="uid://b1n4uu3aa7u77" path="res://scenes/warpzone.tscn" id="5_4nkto"]
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_bswci")
+metadata/_edit_lock_ = true
 
 [node name="Ball" parent="." instance=ExtResource("1_014kd")]
 position = Vector2(363, 1235)
@@ -21,4 +23,28 @@ metadata/_edit_lock_ = true
 [node name="BarMotion1" parent="." instance=ExtResource("4_5xbjy")]
 position = Vector2(667, 801)
 
+[node name="Warpzone" parent="." instance=ExtResource("5_4nkto")]
+position = Vector2(95, 546)
+scale = Vector2(1.2, 1.2)
+
+[node name="WarpA" parent="Warpzone" index="0"]
+position = Vector2(-512.5, 500.83334)
+
+[node name="WarpB" parent="Warpzone" index="1"]
+position = Vector2(-347.5, 504.16666)
+script = null
+
+[node name="Warpzone2" parent="." instance=ExtResource("5_4nkto")]
+position = Vector2(89, 135)
+scale = Vector2(1.2, 1.2)
+
+[node name="WarpA" parent="Warpzone2" index="0"]
+position = Vector2(302.5, 840.8334)
+
+[node name="WarpB" parent="Warpzone2" index="1"]
+position = Vector2(175.83334, 249.16664)
+
 [connection signal="screen_exited" from="Ball/VisibleOnScreenNotifier2D2" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+
+[editable path="Warpzone"]
+[editable path="Warpzone2"]
