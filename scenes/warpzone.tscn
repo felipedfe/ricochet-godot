@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b1n4uu3aa7u77"]
 
-[ext_resource type="Script" uid="uid://c8iuwol7260n0" path="res://scenes/warpzone.gd" id="1_t715l"]
+[ext_resource type="Script" uid="uid://c8iuwol7260n0" path="res://scripts/warpzone.gd" id="1_t715l"]
 [ext_resource type="Script" uid="uid://b5wii08qsqq4f" path="res://scripts/warp.gd" id="3_iqvb7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aaglj"]

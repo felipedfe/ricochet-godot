@@ -1,47 +1,42 @@
-#extends CharacterBody2D
-#
-#@export var speed := 1500
-#var direction := Vector2.ZERO
-#var motion: Vector2
-#
-#func _ready():
-	#direction = Vector2.ZERO
-	#$BallSprite.modulate = Color.HOT_PINK # para pintar a bola
-#
-#func launch():
-	## (1, -1) = pra direita e pra cima
-	#direction = Vector2(1, -1).normalized() # normalized é pra deixar a velocidade diagonal não muito rápida
-#
-#func reset():
-	#direction = Vector2.ZERO
-	#motion = Vector2.ZERO
-#
-#func _physics_process(delta):
-	#if direction != Vector2.ZERO:
-		#motion = direction * speed * delta
-		#var collision = move_and_collide(motion)
-#
-		#if collision:
-			#direction = direction.bounce(collision.get_normal())
-				#
-
 extends CharacterBody2D
+class_name Ball
 
 @export var speed: float = 1500.0
-@export var separation_push: float = 1.0 # empurra pra fora após colisão (ajuste fino)
+#@export var separation_push: float = 1.0 # empurra pra fora após colisão (ajuste fino)
 
 var direction: Vector2 = Vector2.ZERO
+var current_direction: Vector2 = Vector2(1, -1)
+var ball_radius: float
 
 func _ready() -> void:
 	direction = Vector2.ZERO
 	$BallSprite.modulate = Color.HOT_PINK
+	ball_radius = $CollisionShape2D.shape.radius
+	print(ball_radius)
 
 func launch() -> void:
 	# (1, -1) = pra direita e pra cima
-	direction = Vector2(1, -1).normalized()
+	#direction = Vector2(1, -1).normalized()
+	direction = current_direction.normalized()
 
 func reset() -> void:
 	direction = Vector2.ZERO
+
+func reflects_direction(collision):
+	var normal = collision.get_normal()
+	direction = Vector2(-1, -1).normalized()
+	global_position += normal * 10.0
+	print(collision)
+
+func bounce(collision:KinematicCollision2D):
+	print(collision.get_collider())
+	# esse normal é o vetor da direção oposta ao objeto de colisão
+	# ex: se a bola bate no chão o normal retornado seria Vector2(0, -1), que seria a direção pra cima
+	var normal = collision.get_normal() 
+	# reflete direção
+	direction = direction.bounce(normal).normalized()
+	# empurra a bola um pouquinho pra fora da barra, isso é pra evitar que bola agarre na barra
+	global_position += normal * 10.0
 
 func _physics_process(delta):
 	if direction != Vector2.ZERO:
@@ -49,10 +44,11 @@ func _physics_process(delta):
 		var collision = move_and_collide(motion)
 
 		if collision:
-			var normal = collision.get_normal()
+			var collider = collision.get_collider()
 
-			# Reflete direção
-			direction = direction.bounce(normal).normalized()
-
-			# Empurra a bola um pouquinho pra fora da barra
-			global_position += normal * 10.0
+			# Se o collider tiver um método pra tratar a colisão ele chama, senao cai no bounce()
+			if collider != null and collider.has_method("on_ball_hit"):
+				collider.on_ball_hit(self, collision)
+				return
+			
+			bounce(collision)

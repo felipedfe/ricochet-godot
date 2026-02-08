@@ -4,15 +4,16 @@
 [ext_resource type="Texture2D" uid="uid://de57akf2ckup2" path="res://assets/bar-default.png" id="2_yj06k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ph1en"]
-size = Vector2(26.548672, 145.88234)
+size = Vector2(17.924835, 118.10841)
 
-[node name="MotionBarDefault" type="AnimatableBody2D"]
+[node name="BarMotion" type="AnimatableBody2D"]
+scale = Vector2(1.333, 1.275)
 script = ExtResource("1_a455q")
 
 [node name="BarSprite" type="Sprite2D" parent="."]
-scale = Vector2(1.3333333, 1.275)
 texture = ExtResource("2_yj06k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.3750938, 0)
 scale = Vector2(1.13, 1.275)
 shape = SubResource("RectangleShape2D_ph1en")

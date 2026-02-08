@@ -1,9 +1,9 @@
 extends AnimatableBody2D
-
+class_name BarMotion
 
 var initial_y_pos: float
 var final_y_pos: float
-var speed = 200
+var speed = 0 # padrão é 200
 var dir: float = -1.0 # -1 = subindo, +1 = descendo
 
 # define até onde a barra pode subir e descer
