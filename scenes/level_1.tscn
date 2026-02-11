@@ -22,17 +22,17 @@ scale = Vector2(3.2, 3.2)
 metadata/_edit_lock_ = true
 
 [node name="BarMotion1" parent="." instance=ExtResource("4_5xbjy")]
-position = Vector2(105, 978)
+position = Vector2(381, 775.00006)
 
 [node name="Warpzone" parent="." instance=ExtResource("5_4nkto")]
 position = Vector2(95, 546)
 scale = Vector2(1.2, 1.2)
 
 [node name="WarpA" parent="Warpzone" index="0"]
-position = Vector2(-512.5, 500.83334)
+position = Vector2(-683.3333, 557.5)
 
 [node name="WarpB" parent="Warpzone" index="1"]
-position = Vector2(-347.5, 504.16666)
+position = Vector2(-533.3333, 577.5)
 script = null
 
 [node name="Warpzone2" parent="." instance=ExtResource("5_4nkto")]
@@ -40,13 +40,19 @@ position = Vector2(89, 135)
 scale = Vector2(1.2, 1.2)
 
 [node name="WarpA" parent="Warpzone2" index="0"]
-position = Vector2(162.5, 545.8334)
+position = Vector2(-372.5, 400.8333)
 
 [node name="WarpB" parent="Warpzone2" index="1"]
-position = Vector2(175.83334, 249.16664)
+position = Vector2(-478.33328, 294.16666)
 
 [node name="BarMotionGrab1" parent="." instance=ExtResource("5_fcfvj")]
-position = Vector2(643, 959)
+position = Vector2(637, 982)
+
+[node name="BarMotionGrab2" parent="." instance=ExtResource("5_fcfvj")]
+position = Vector2(622, 613.99994)
+
+[node name="BarMotionGrab3" parent="." instance=ExtResource("5_fcfvj")]
+position = Vector2(265, 380)
 
 [connection signal="screen_exited" from="Ball/VisibleOnScreenNotifier2D2" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 

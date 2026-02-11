@@ -3,6 +3,7 @@ extends Node2D
 @onready var ball_node: CharacterBody2D = $Ball
 @onready var bar1: BarMotion = $BarMotion1
 @onready var bar_grab1: BarMotion = $BarMotionGrab1
+@onready var bar_grab2: BarMotion = $BarMotionGrab2
 var initial_ball_pos: Vector2
 #var ball_ready_to_launch = true
 
@@ -11,9 +12,10 @@ func _ready():
 	ball_node.position = initial_ball_pos
 	bar1.setup(50,200)
 	bar1.set_speed(200)
-	bar_grab1.setup(100, 170)
+	bar_grab1.setup(100, 140)
 	bar_grab1.set_speed(200)
-
+	bar_grab2.setup(100, 120)
+	bar_grab2.set_speed(50)
 func reset_ball_pos():
 	ball_node.position = initial_ball_pos
 	ball_node.reset()
