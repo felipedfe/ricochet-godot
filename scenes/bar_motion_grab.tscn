@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dn7rkf5sns7gs" path="res://scripts/bar_motion_grab.gd" id="1_eg0dk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k8o8g"]
-size = Vector2(20, 149)
+size = Vector2(27.006752, 149.72679)
 
 [node name="BarMotionGrab" type="AnimatableBody2D"]
 scale = Vector2(1.333, 1.275)

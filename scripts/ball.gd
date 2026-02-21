@@ -25,22 +25,48 @@ func launch() -> void:
 func reset() -> void:
 	direction = Vector2.ZERO
 
-func reflects_direction(collision):
-	var normal = collision.get_normal()
-	direction = Vector2(-1, -1).normalized()
-	global_position += normal * 10.0
-	print(collision)
+#func reflects_direction(collision):
+	#var normal = collision.get_normal()
+	#direction = Vector2(-1, -1).normalized()
+	#global_position += normal * 10.0
+	#print(collision)
 
-func bounce(collision:KinematicCollision2D):
-	print(collision.get_collider())
+#func bounce(collision:KinematicCollision2D):
+	##print(collision.get_collider())
+	#
+	## esse normal é o vetor da direção oposta ao objeto de colisão
+	## ex: se a bola bate no chão o normal retornado seria Vector2(0, -1), que seria a direção pra cima
+	#var normal = collision.get_normal() 
+	## reflete direção
+	#current_direction = direction.bounce(normal).normalized()
+#
+	#direction = current_direction
+	## empurra a bola um pouquinho pra fora da barra, isso é pra evitar que bola agarre na barra
+	#global_position += normal * 10.0
+	
+func lock_to_45(v: Vector2) -> Vector2:
+	var sx := 1.0 if v.x >= 0.0 else -1.0
+	var sy := 1.0 if v.y >= 0.0 else -1.0
+	return Vector2(sx, sy).normalized()
+
+func bounce(collision: KinematicCollision2D):
 	# esse normal é o vetor da direção oposta ao objeto de colisão
 	# ex: se a bola bate no chão o normal retornado seria Vector2(0, -1), que seria a direção pra cima
-	var normal = collision.get_normal() 
-	# reflete direção
-	current_direction = direction.bounce(normal).normalized()
+	var normal = collision.get_normal()
+
+	# decide se inverte X ou Y (sem de ângulo livre)
+	if abs(normal.x) > abs(normal.y):
+		current_direction.x *= -1
+	else:
+		current_direction.y *= -1
+
+	# trava sempre em 45 graus
+	current_direction = lock_to_45(current_direction)
 	direction = current_direction
+
 	# empurra a bola um pouquinho pra fora da barra, isso é pra evitar que bola agarre na barra
 	global_position += normal * 10.0
+
 
 func _physics_process(delta):
 	if direction != Vector2.ZERO:

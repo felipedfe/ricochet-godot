@@ -7,7 +7,6 @@
 size = Vector2(17.924835, 118.10841)
 
 [node name="BarMotion" type="AnimatableBody2D"]
-scale = Vector2(1.333, 1.275)
 script = ExtResource("1_a455q")
 
 [node name="BarSprite" type="Sprite2D" parent="."]

@@ -13,7 +13,6 @@ metadata/_edit_lock_ = true
 
 [node name="Ball" parent="." instance=ExtResource("1_014kd")]
 position = Vector2(363, 1235)
-scale = Vector2(0.5, 0.5)
 script = ExtResource("3_rus8k")
 
 [node name="VisibleOnScreenNotifier2D2" type="VisibleOnScreenNotifier2D" parent="Ball"]
@@ -22,7 +21,10 @@ scale = Vector2(3.2, 3.2)
 metadata/_edit_lock_ = true
 
 [node name="BarMotion1" parent="." instance=ExtResource("4_5xbjy")]
-position = Vector2(381, 775.00006)
+position = Vector2(155, 482)
+set_up_y_pos = 20.0
+set_down_y_pos = 20.0
+set_bar_speed = 50.0
 
 [node name="Warpzone" parent="." instance=ExtResource("5_4nkto")]
 position = Vector2(95, 546)
@@ -46,16 +48,29 @@ position = Vector2(-372.5, 400.8333)
 position = Vector2(-478.33328, 294.16666)
 
 [node name="BarMotionGrab1" parent="." instance=ExtResource("5_fcfvj")]
-position = Vector2(637, 982)
+position = Vector2(617, 963)
+scale = Vector2(1, 1)
+set_up_y_pos = 100.0
+set_down_y_pos = 100.0
+set_bar_speed = 200.0
 
 [node name="BarMotionGrab2" parent="." instance=ExtResource("5_fcfvj")]
-position = Vector2(622, 613.99994)
+position = Vector2(45, 1064)
 
 [node name="BarMotionGrab3" parent="." instance=ExtResource("5_fcfvj")]
-position = Vector2(265, 380)
+position = Vector2(241, 598)
+scale = Vector2(1.36, 3.02)
+set_up_y_pos = 100.0
+set_down_y_pos = 100.0
+set_bar_speed = 100.0
+
+[node name="CollisionShape2D" parent="BarMotionGrab3" index="1"]
+position = Vector2(0, 1.0928955)
+scale = Vector2(1.0000001, 1.0000002)
 
 [connection signal="screen_exited" from="Ball/VisibleOnScreenNotifier2D2" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 
 [editable path="Ball"]
 [editable path="Warpzone"]
 [editable path="Warpzone2"]
+[editable path="BarMotionGrab3"]
