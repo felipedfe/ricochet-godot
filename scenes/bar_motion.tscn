@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://de57akf2ckup2" path="res://assets/bar-default.png" id="2_yj06k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ph1en"]
-size = Vector2(17.924835, 118.10841)
+size = Vector2(26, 152)
 
 [node name="BarMotion" type="AnimatableBody2D"]
 script = ExtResource("1_a455q")
@@ -13,6 +13,5 @@ script = ExtResource("1_a455q")
 texture = ExtResource("2_yj06k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.3750938, 0)
-scale = Vector2(1.13, 1.275)
+position = Vector2(3.5762787e-07, 3.8146973e-06)
 shape = SubResource("RectangleShape2D_ph1en")

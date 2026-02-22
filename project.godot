@@ -29,6 +29,10 @@ window/stretch/mode="viewport"
 window/stretch/aspect="keep_height"
 window/handheld/orientation=1
 
+[global_group]
+
+ball=""
+
 [input]
 
 click={

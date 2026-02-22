@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Ball
 
+@onready var col_shape: CollisionShape2D = $CollisionShape2D
+
 @export var speed: float = 1500.0
 #@export var separation_push: float = 1.0 # empurra pra fora após colisão (ajuste fino)
 var direction: Vector2 = Vector2.ZERO

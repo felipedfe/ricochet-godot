@@ -1,27 +1,40 @@
-[gd_scene load_steps=7 format=3 uid="uid://lnyqabnmu4ek"]
+[gd_scene load_steps=8 format=3 uid="uid://deigrutr4e8wj"]
 
-[ext_resource type="PackedScene" uid="uid://dl5hd3nrepmkm" path="res://scenes/ball.tscn" id="1_014kd"]
-[ext_resource type="Script" uid="uid://5lx33s3kr54w" path="res://scripts/level_1.gd" id="1_bswci"]
+[ext_resource type="Script" uid="uid://drg07ivrbq17e" path="res://scripts/level_1.gd" id="1_014kd"]
+[ext_resource type="PackedScene" uid="uid://dl5hd3nrepmkm" path="res://scenes/ball.tscn" id="2_pa8r4"]
 [ext_resource type="Script" uid="uid://p80bctg35b7g" path="res://scripts/ball.gd" id="3_rus8k"]
 [ext_resource type="PackedScene" uid="uid://8y8qv0vrfw6w" path="res://scenes/bar_motion.tscn" id="4_5xbjy"]
 [ext_resource type="PackedScene" uid="uid://b1n4uu3aa7u77" path="res://scenes/warpzone.tscn" id="5_4nkto"]
 [ext_resource type="PackedScene" uid="uid://c2ot0whx3iwi2" path="res://scenes/bar_motion_grab.tscn" id="5_fcfvj"]
+[ext_resource type="PackedScene" uid="uid://3evwj7io5agq" path="res://scenes/finish_hole.tscn" id="7_pa8r4"]
 
 [node name="Level1" type="Node2D"]
-script = ExtResource("1_bswci")
-metadata/_edit_lock_ = true
+script = ExtResource("1_014kd")
 
-[node name="Ball" parent="." instance=ExtResource("1_014kd")]
+[node name="Ball" parent="." instance=ExtResource("2_pa8r4")]
 position = Vector2(363, 1235)
 script = ExtResource("3_rus8k")
 
-[node name="VisibleOnScreenNotifier2D2" type="VisibleOnScreenNotifier2D" parent="Ball"]
+[node name="VisibleOnScreenNotifier2D2" type="VisibleOnScreenNotifier2D" parent="Ball" groups=["ball"]]
 modulate = Color(0.801691, 0.000511341, 0.803434, 1)
 scale = Vector2(3.2, 3.2)
 metadata/_edit_lock_ = true
 
+[node name="BarMotion" parent="." instance=ExtResource("4_5xbjy")]
+position = Vector2(514, 556)
+
 [node name="BarMotion1" parent="." instance=ExtResource("4_5xbjy")]
-position = Vector2(155, 482)
+position = Vector2(71, 391)
+axis = 1
+set_up_y_pos = 20.0
+set_down_y_pos = 20.0
+set_left_x_pos = 60.0
+set_right_x_pos = 300.0
+set_bar_speed = 200.0
+
+[node name="BarMotion2" parent="." instance=ExtResource("4_5xbjy")]
+position = Vector2(110.00009, 909)
+scale = Vector2(6, 0.15)
 set_up_y_pos = 20.0
 set_down_y_pos = 20.0
 set_bar_speed = 50.0
@@ -48,7 +61,7 @@ position = Vector2(-372.5, 400.8333)
 position = Vector2(-478.33328, 294.16666)
 
 [node name="BarMotionGrab1" parent="." instance=ExtResource("5_fcfvj")]
-position = Vector2(617, 963)
+position = Vector2(70, 784)
 scale = Vector2(1, 1)
 set_up_y_pos = 100.0
 set_down_y_pos = 100.0
@@ -56,21 +69,31 @@ set_bar_speed = 200.0
 
 [node name="BarMotionGrab2" parent="." instance=ExtResource("5_fcfvj")]
 position = Vector2(45, 1064)
+set_up_y_pos = 111.0
+set_down_y_pos = 111.0
+set_bar_speed = 111.0
 
 [node name="BarMotionGrab3" parent="." instance=ExtResource("5_fcfvj")]
-position = Vector2(241, 598)
+position = Vector2(624, 838)
 scale = Vector2(1.36, 3.02)
-set_up_y_pos = 100.0
-set_down_y_pos = 100.0
-set_bar_speed = 100.0
+set_up_y_pos = 300.0
+set_down_y_pos = 200.0
+set_bar_speed = 500.0
+
+[node name="BarSprite" parent="BarMotionGrab3" index="0"]
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" parent="BarMotionGrab3" index="1"]
-position = Vector2(0, 1.0928955)
+position = Vector2(0, -0.16555786)
 scale = Vector2(1.0000001, 1.0000002)
+metadata/_edit_lock_ = true
 
-[connection signal="screen_exited" from="Ball/VisibleOnScreenNotifier2D2" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[node name="FinishHole" parent="." instance=ExtResource("7_pa8r4")]
+position = Vector2(287, 11)
+scale = Vector2(0.2, 0.5)
 
 [editable path="Ball"]
+[editable path="BarMotion2"]
 [editable path="Warpzone"]
 [editable path="Warpzone2"]
 [editable path="BarMotionGrab3"]

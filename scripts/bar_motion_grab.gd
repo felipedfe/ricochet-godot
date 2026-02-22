@@ -100,14 +100,13 @@
 		#ball_node.direction = Vector2.ZERO
 
 
-
 extends "res://scripts/bar_motion.gd"
 
 @onready var ball_node: Ball = $"../Ball"
 @onready var ball_col_shape: CollisionShape2D = $"../Ball/CollisionShape2D"
 @onready var col_shape: CollisionShape2D = $CollisionShape2D
 
-# tamanho em pixels da faixa do topo e da base que NÃO gruda (só rebate)
+# tamanho em pixels da faixa do topo e da base que não gruda (só rebate)
 @export var edge_zone_px: float = 10.0
 
 var grab_offset := Vector2.ZERO
@@ -116,7 +115,7 @@ var grab_offset_y := 0.0
 
 func _ready() -> void:
 	$BarSprite.modulate = Color.LIGHT_BLUE
-	setup(set_up_y_pos, set_down_y_pos)
+	setup(BarMotion.Axis.VERTICAL, set_up_y_pos, set_down_y_pos)
 	set_speed(set_bar_speed)
 	#print(global_position.y)
 
@@ -140,10 +139,10 @@ func on_ball_hit(ball: Ball, collision: KinematicCollision2D) -> void:
 	# y da bola relativo ao centro da barra (0 = meio, negativo = perto do topo, positivo = perto da base)
 	var local_y := ball.global_position.y - global_position.y
 
-	# se você quer que a faixa rosa também aumente/diminua com o scale:
-	var edge = edge_zone_px * col_shape.global_scale.y
-	# se você quer que a faixa rosa seja sempre 10px "de tela", não multiplica:
-	# var edge = edge_zone_px
+	# para a faixa rosa também aumentar/diminuir com o scale:
+	#var edge = edge_zone_px * col_shape.global_scale.y
+	# para que a faixa rosa seja sempre 10px (ou outro valor setado em edge_zone_px) "de tela", não multiplica pelo scale:
+	var edge = edge_zone_px
 
 	# se está dentro da faixa de topo/base → rebate (não gruda)
 	var hit_top = local_y <= (-half_h + edge)
@@ -155,27 +154,7 @@ func on_ball_hit(ball: Ball, collision: KinematicCollision2D) -> void:
 		ball.bounce(collision)
 		return
 	
-	#if hit_top or hit_bottom:
-		## Rebate como uma barra normal (usa o collision normal pra decidir eixo)
-		## IMPORTANTE: não dá reset, senão ela para
-		#ball.bounce(collision)
-#
-		## FORÇA o sentido vertical do ricochete:
-		## topo -> sobe (y negativo), base -> desce (y positivo)
-		#if hit_top:
-			#ball.current_direction.y = -abs(ball.current_direction.y)
-		#else:
-			#ball.current_direction.y = abs(ball.current_direction.y)
-#
-		## trava em 45 graus (pra não virar um ângulo estranho)
-		#ball.current_direction = ball.lock_to_45(ball.current_direction)
-		#ball.direction = ball.current_direction
-		#return
-
-	
-	
 	ball.reset()
-	#print("current direction -> ", ball.current_direction)
 
 	# define de que lado a bola veio. O segundo global position é o da barra
 	var from_left := ball.global_position.x < global_position.x

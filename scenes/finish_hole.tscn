@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://3evwj7io5agq"]
+
+[ext_resource type="Script" uid="uid://tv5gmcnfhmym" path="res://scripts/finish_hole.gd" id="1_aesr2"]
+[ext_resource type="Texture2D" uid="uid://npse3jlcpris" path="res://assets/hole.png" id="1_o6idx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gsx40"]
+size = Vector2(270, 34)
+
+[node name="FinishHole" type="Area2D"]
+script = ExtResource("1_aesr2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_o6idx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gsx40")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

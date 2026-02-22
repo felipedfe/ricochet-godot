@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://lnyqabnmu4ek"]
+
+[ext_resource type="PackedScene" uid="uid://dl5hd3nrepmkm" path="res://scenes/ball.tscn" id="1_014kd"]
+[ext_resource type="Script" uid="uid://5lx33s3kr54w" path="res://scripts/level_base.gd" id="1_bswci"]
+[ext_resource type="Script" uid="uid://p80bctg35b7g" path="res://scripts/ball.gd" id="3_rus8k"]
+
+[node name="LevelBase" type="Node2D"]
+script = ExtResource("1_bswci")
+metadata/_edit_lock_ = true
+
+[node name="Ball" parent="." instance=ExtResource("1_014kd")]
+position = Vector2(363, 1235)
+script = ExtResource("3_rus8k")
+
+[node name="VisibleOnScreenNotifier2D2" type="VisibleOnScreenNotifier2D" parent="Ball"]
+modulate = Color(0.801691, 0.000511341, 0.803434, 1)
+scale = Vector2(3.2, 3.2)
+metadata/_edit_lock_ = true
+
+[connection signal="screen_exited" from="Ball/VisibleOnScreenNotifier2D2" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+
+[editable path="Ball"]
