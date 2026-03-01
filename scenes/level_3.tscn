@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://oxe7ja6gq6nn"]
+
+[ext_resource type="Script" uid="uid://bhjbgc5afwr7p" path="res://scenes/level_3.gd" id="1_uwxec"]
+[ext_resource type="PackedScene" uid="uid://dl5hd3nrepmkm" path="res://scenes/ball.tscn" id="2_1pn4d"]
+[ext_resource type="Script" uid="uid://p80bctg35b7g" path="res://scripts/ball.gd" id="3_ah8om"]
+[ext_resource type="PackedScene" uid="uid://8y8qv0vrfw6w" path="res://scenes/bar_motion.tscn" id="4_1pn4d"]
+[ext_resource type="PackedScene" uid="uid://b1n4uu3aa7u77" path="res://scenes/warpzone.tscn" id="5_ah8om"]
+[ext_resource type="PackedScene" uid="uid://c2ot0whx3iwi2" path="res://scenes/bar_motion_grab.tscn" id="6_p6vls"]
+
+[node name="Level3" type="Node2D"]
+script = ExtResource("1_uwxec")
+
+[node name="Ball" parent="." instance=ExtResource("2_1pn4d")]
+position = Vector2(363, 1239)
+script = ExtResource("3_ah8om")
+
+[node name="VisibleOnScreenNotifier2D2" type="VisibleOnScreenNotifier2D" parent="Ball" groups=["ball"]]
+modulate = Color(0.801691, 0.000511341, 0.803434, 1)
+scale = Vector2(3.2, 3.2)
+metadata/_edit_lock_ = true
+
+[node name="BarMotion1" parent="." instance=ExtResource("4_1pn4d")]
+position = Vector2(631, 1082)
+
+[node name="BarMotion2" parent="." instance=ExtResource("4_1pn4d")]
+position = Vector2(12, 521)
+scale = Vector2(1, 1.3)
+
+[node name="BarMotion3" parent="." instance=ExtResource("4_1pn4d")]
+position = Vector2(44.99999, 422.99994)
+scale = Vector2(5, 0.15)
+
+[node name="BarMotion5" parent="." instance=ExtResource("4_1pn4d")]
+position = Vector2(290.00003, 391.99997)
+scale = Vector2(5, 0.15)
+
+[node name="BarMotion4" parent="." instance=ExtResource("4_1pn4d")]
+position = Vector2(84.999985, 613.99994)
+scale = Vector2(5, 0.15)
+
+[node name="Warpzone" parent="." instance=ExtResource("5_ah8om")]
+
+[node name="WarpA" parent="Warpzone" index="0"]
+position = Vector2(337, 778)
+
+[node name="WarpB" parent="Warpzone" index="1"]
+position = Vector2(304, 642)
+
+[node name="BarMotionGrab2" parent="." instance=ExtResource("6_p6vls")]
+position = Vector2(674, 726)
+set_up_y_pos = 100.0
+set_down_y_pos = 150.0
+set_bar_speed = 200.0
+
+[editable path="Ball"]
+[editable path="Warpzone"]

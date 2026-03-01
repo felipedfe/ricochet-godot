@@ -62,7 +62,6 @@ position = Vector2(-478.33328, 294.16666)
 
 [node name="BarMotionGrab1" parent="." instance=ExtResource("5_fcfvj")]
 position = Vector2(70, 784)
-scale = Vector2(1, 1)
 set_up_y_pos = 100.0
 set_down_y_pos = 100.0
 set_bar_speed = 200.0
@@ -90,7 +89,6 @@ metadata/_edit_lock_ = true
 
 [node name="FinishHole" parent="." instance=ExtResource("7_pa8r4")]
 position = Vector2(287, 11)
-scale = Vector2(0.2, 0.5)
 
 [editable path="Ball"]
 [editable path="BarMotion2"]

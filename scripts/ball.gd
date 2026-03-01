@@ -3,7 +3,7 @@ class_name Ball
 
 @onready var col_shape: CollisionShape2D = $CollisionShape2D
 
-@export var speed: float = 1500.0
+@export var speed: float = 1900.0
 #@export var separation_push: float = 1.0 # empurra pra fora após colisão (ajuste fino)
 var direction: Vector2 = Vector2.ZERO
 var current_direction: Vector2 = Vector2(1, -1)

@@ -7,6 +7,7 @@
 size = Vector2(26, 152)
 
 [node name="BarMotion" type="AnimatableBody2D"]
+sync_to_physics = false
 script = ExtResource("1_a455q")
 
 [node name="BarSprite" type="Sprite2D" parent="."]

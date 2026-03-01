@@ -13,6 +13,7 @@ position = Vector2(363, 1235)
 script = ExtResource("3_rus8k")
 
 [node name="VisibleOnScreenNotifier2D2" type="VisibleOnScreenNotifier2D" parent="Ball"]
+visible = false
 modulate = Color(0.801691, 0.000511341, 0.803434, 1)
 scale = Vector2(3.2, 3.2)
 metadata/_edit_lock_ = true
