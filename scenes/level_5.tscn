@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://t2wvnfcg31bq"]
+
+[ext_resource type="Script" uid="uid://h244tfklfp2u" path="res://scenes/level_5.gd" id="1_e224s"]
+[ext_resource type="PackedScene" uid="uid://dl5hd3nrepmkm" path="res://scenes/ball.tscn" id="2_wcwf6"]
+[ext_resource type="Script" uid="uid://p80bctg35b7g" path="res://scripts/ball.gd" id="3_tbt7t"]
+[ext_resource type="PackedScene" uid="uid://c2ot0whx3iwi2" path="res://scenes/bar_motion_grab.tscn" id="4_wcwf6"]
+[ext_resource type="PackedScene" uid="uid://8y8qv0vrfw6w" path="res://scenes/bar_motion.tscn" id="5_tbt7t"]
+[ext_resource type="PackedScene" uid="uid://3evwj7io5agq" path="res://scenes/finish_hole.tscn" id="6_cynta"]
+
+[node name="Level5" type="Node2D"]
+script = ExtResource("1_e224s")
+
+[node name="Ball" parent="." instance=ExtResource("2_wcwf6")]
+position = Vector2(363, 1239)
+script = ExtResource("3_tbt7t")
+
+[node name="VisibleOnScreenNotifier2D2" type="VisibleOnScreenNotifier2D" parent="Ball" groups=["ball"]]
+modulate = Color(0.801691, 0.000511341, 0.803434, 1)
+scale = Vector2(3.2, 3.2)
+metadata/_edit_lock_ = true
+
+[node name="BarMotionGrab" parent="." instance=ExtResource("4_wcwf6")]
+position = Vector2(-293, 1039)
+edge_zone_px = 0.0
+set_up_y_pos = 200.0
+set_down_y_pos = 200.0
+set_bar_speed = 250.0
+
+[node name="BarMotionGrab3" parent="." instance=ExtResource("4_wcwf6")]
+position = Vector2(686, 1039)
+edge_zone_px = 0.0
+set_up_y_pos = 100.0
+set_down_y_pos = 100.0
+set_bar_speed = 250.0
+
+[node name="BarMotionGrab2" parent="." instance=ExtResource("4_wcwf6")]
+position = Vector2(684, 517)
+set_up_y_pos = 200.0
+set_down_y_pos = 100.0
+set_bar_speed = 190.0
+
+[node name="BarMotion2" parent="." instance=ExtResource("5_tbt7t")]
+position = Vector2(283, 747)
+set_up_y_pos = 100.0
+set_down_y_pos = 100.0
+
+[node name="BarMotion5" parent="." instance=ExtResource("5_tbt7t")]
+position = Vector2(365, 278.99994)
+scale = Vector2(5, 0.15)
+axis = 1
+set_left_x_pos = 200.0
+set_right_x_pos = 200.0
+set_bar_speed = 400.0
+
+[node name="FinishHole" parent="." instance=ExtResource("6_cynta")]
+position = Vector2(13, 761)
+scale = Vector2(0.1, 2)
+
+[editable path="Ball"]

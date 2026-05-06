@@ -359,8 +359,12 @@ var grab_offset_y := 0.0
 
 func _ready() -> void:
 	$BarSprite.modulate = Color.LIGHT_BLUE
-	setup(BarMotion.Axis.VERTICAL, set_up_y_pos, set_down_y_pos)
-	set_speed(set_bar_speed)
+	
+	super()
+	
+	#setup(BarMotion.Axis.VERTICAL, set_up_y_pos, set_down_y_pos)
+	#set_speed(set_bar_speed)
+	
 	#print(global_position.y)
 
 
